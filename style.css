@@ -1,0 +1,844 @@
+@import url('https://fonts.googleapis.com/css?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,500;1,600;1,700;1,800;1,900&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Bonbon&display=swap'); /* Note: Bonbon font is imported but not used in provided HTML */
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+body {
+    height: 100vh;
+    /* Ensure body doesn't overflow, allowing main to control height */
+    overflow: hidden;
+}
+
+main {
+    display: flex;
+    height: 100vh; /* Main takes full viewport height */
+    width: 100vw; /* Main takes full viewport width */
+    font-family: 'Poppins', sans-serif; /* Specify font family */
+    background-color: #343a40; /* Consistent background for content area */
+}
+
+aside {
+    flex-shrink: 0; /* Prevent aside from shrinking */
+    width: 280px;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    font-size: 1.1rem;
+    background-color: #212529;
+    backdrop-filter: blur(20px);
+    box-shadow: 2px 0 10px rgba(0, 0, 0, 0.4); /* Added a shadow */
+}
+
+.links {
+    display: flex;
+    flex-direction: column;
+    margin: auto 0; /* Vertically center the links within aside */
+    padding: 20px 0; /* Add some padding to links container */
+}
+
+aside li {
+    list-style-type: none;
+    display: flex;
+    padding: 20px;
+    gap: 10px;
+    color: white;
+    align-items: center;
+    cursor: pointer;
+    position: relative;
+    transition: color 0.2s, background-color 0.2s; /* Added background-color transition */
+}
+
+aside li:hover {
+    color: #0ed999;
+    background-color: rgba(14, 217, 153, 0.1); /* Subtle background on hover */
+}
+
+aside li.active { /* Styling for the active link */
+    color: #0ed999;
+    background-color: rgba(14, 217, 153, 0.2); /* More prominent background for active */
+    font-weight: 600; /* Make active text slightly bolder */
+}
+
+aside li::after {
+    position: absolute;
+    width: 100%;
+    left: 0px;
+    height: 1px;
+    background: linear-gradient(to left, transparent, #ffffff24, transparent);
+    content: "";
+    bottom: 0px;
+}
+
+aside li i {
+    font-size: 1.3rem;
+}
+
+/* Swiper Container Styling */
+.mySwiper {
+    flex: 1; /* Take remaining space */
+    height: 100%;
+    /* No fixed width or height here, flex handles it */
+    overflow: hidden; /* Important for Swiper */
+    background-color: #343a40;
+}
+
+.swiper-wrapper {
+    height: 100%; /* Ensure wrapper takes full height of swiper */
+}
+
+.swiper-slide {
+    width: 100%;
+    height: 100%;
+    background-color: #343a40;
+    /* Cube effect handles transforms, so no manual translate/opacity here */
+    overflow-y: auto; /* Allow individual slides to scroll if content is long */
+    padding: 150px; /* Default padding for all slides */
+}
+
+/* Home Slide Specific Styling */
+.home-slide {
+    display: flex; /* Flex layout for content and image */
+    flex-direction: row; /* Content and image side-by-side */
+    justify-content: space-between;
+    align-items: center;
+    gap: 40px; /* Space between content and image */
+    position: relative;
+}
+
+.homeContent { /* Corrected from home-content in some of my previous responses */
+    margin: auto 0;
+    flex: 1;
+    height: auto;
+    /* Padding is defined on .swiper-slide, if you need more specific for HomeContent, add it here */
+    user-select: none;
+    max-width: 60%; /* To give space for the image */
+}
+
+.slideImg { /* Corrected from SideImg in your CSS */
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative; /* For positioning corner decorations */
+    max-width: 40%;
+}
+
+.slideImg img {
+    width: 100%;
+    height: auto; /* Allow image to scale with width */
+    border-radius: 10px;
+    object-fit: cover; /* Ensures image covers area without distortion */
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3); /* Added a subtle shadow */
+}
+
+/* Corner Decorations - ensure these are within the home-slide div */
+/* These classes are for wrapper divs around hr1 and hr2 in HTML */
+.top-right-corner {
+    position: absolute;
+    right: 0px;
+    top: 0px;
+    /* No rotate here, the hr elements themselves might be rotated */
+    overflow: hidden; /* Hide excess of hr if they extend beyond the corner */
+    width: 150px; /* Adjusted to your hr width */
+    height: 120px; /* Adjusted to your hr height */
+}
+
+.bottom-left-corner {
+    position: absolute;
+    left: 0px;
+    bottom: 0px;
+    /* No rotate here */
+    overflow: hidden;
+    width: 150px;
+    height: 120px;
+}
+
+.hr1 {
+    width: 150px;
+    height: 10px;
+    border: none;
+    background: #88ed99;
+    border-top-right-radius: 3px;
+    border-bottom-right-radius: 3px;
+    position: absolute; /* Position within its corner wrapper */
+}
+
+.top-right-corner .hr1 {
+    top: 0;
+    right: 0;
+}
+
+.bottom-left-corner .hr1 {
+    bottom: 0;
+    left: 0;
+}
+
+
+.hr2 {
+    width: 10px;
+    height: 120px;
+    border-bottom-left-radius: 3px;
+    background: #80ed99;
+    border: none;
+    border-bottom-right-radius: 3px;
+    position: absolute; /* Position within its corner wrapper */
+}
+
+.top-right-corner .hr2 {
+    top: 0;
+    right: 0;
+}
+
+.bottom-left-corner .hr2 {
+    bottom: 0;
+    left: 0;
+}
+
+/* Home Content Text */
+.HomeContent h1 {
+    font-size: 30px; /* Adjusted to 30px as in your code */
+    font-weight: 700;
+    margin-bottom: 10px;
+}
+
+.HomeContent h2 {
+    font-size: 2.3em;
+    margin-bottom: 10px;
+    font-weight: 600;
+}
+
+.HomeContent h1 .stylized-name {
+    font-weight: 700;
+    color: #80ed99;
+}
+
+.professions {
+    color: #85f69f;
+}
+
+.HomeContent .heroline {
+    font-size: 1.5rem;
+    font-weight: 300;
+    padding-right: 50px;
+}
+
+.buttonGroup {
+    display: flex;
+    padding: 10px 0px;
+    margin-top: 10px;
+}
+
+.buttonGroup button { /* Removed .primary from selector, as it's for all buttons in this group */
+    padding: 10px 20px;
+    border: none;
+    outline: none;
+    font-size: 1.2rem;
+    font-weight: 500;
+    margin: 5px;
+    cursor: pointer;
+    background-color: #1d8637;
+    color: white;
+    border-radius: 5px;
+    transition: background-color 0.2s ease, transform 0.2s ease;
+}
+
+.buttonGroup button:hover {
+    background-color: #0ed999; /* Lighter green on hover */
+    transform: translateY(-2px);
+}
+
+.slide-help {
+    position: absolute;
+    bottom: 10px;
+    width: 100%;
+    text-align: center;
+    font-weight: 400;
+    z-index: 100;
+    left: 0%;
+    box-sizing: border-box;
+    font-size: 1.2rem;
+    color: white; /* Ensure text color is visible */
+    display: flex; /* For centering the icon */
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+
+.slide-help i {
+    color: #80ed99; /* Icon color */
+}
+
+
+/* About Slide Specific Styling */
+.about { /* Matches ID in HTML */
+    width: 100%;
+    height: 100%;
+    /* Padding is defined on .swiper-slide already */
+    color: white;
+    /* overflow: auto; -- Removed as swiper-slide already has overflow-y: auto */
+}
+
+.heading {
+    padding: 20px 10px;
+    font-size: 2.5rem;
+    color: #8bed99;
+    text-align: center; /* Center headings */
+}
+
+.about-us h3 {
+    padding: 10px;
+    text-align: center; /* Center sub-headings */
+}
+
+.aboutme-details {
+    padding: 20px;
+    font-weight: 300;
+    text-align: justify; /* Justify text for readability */
+}
+
+.about-me-division {
+    display: flex;
+    flex-wrap: wrap; /* Allow wrapping on smaller screens */
+    gap: 20px; /* Space between the two columns */
+    justify-content: center; /* Center the columns if they wrap */
+    padding: 0 20px; /* Add some horizontal padding */
+}
+
+.about-me-left { /* Matches div class in HTML */
+    flex: 1;
+    min-width: 300px; /* Ensure minimum width for list */
+}
+
+.about-me-left ul.skills-list { /* Explicitly target skills-list */
+    list-style-type: none;
+    padding-left: 0;
+}
+
+.about-me-left ul.skills-list li {
+    padding: 20px 0; /* Adjust padding for list items */
+    position: relative;
+    /* Removed the ::after rule from here, as it's defined globally for aside li */
+}
+
+/* If you still want a separator for about-me-left list items, define it here: */
+.about-me-left ul.skills-list li::after {
+    position: absolute;
+    width: 100%;
+    left: 0px;
+    height: 1px;
+    background: linear-gradient(to left, transparent, #ffffff24, transparent);
+    content: "";
+    bottom: 8px;
+}
+
+
+.about-me-left ul.skills-list li span {
+    color: #88ed99;
+    font-weight: bold;
+    margin-right: 5px;
+}
+
+.about-me-left .buttonGroup {
+    /* If you have a button group here, define its styling */
+    justify-content: center;
+    padding: 20px 0;
+}
+
+
+.Skill-bar { /* Corrected from skill-bar in your CSS */
+    flex: 1;
+    min-width: 300px; /* Ensure minimum width for skill bars */
+}
+
+.Skill-bar ul {
+    list-style-type: none;
+    padding-left: 0;
+}
+
+.Skill-bar li {
+    width: 100%;
+    padding: 10px 0; /* Adjust padding for skill bar items */
+}
+
+.Skill-bar p {
+    color: #8ed699;
+    font-weight: bold;
+    margin: 10px 0;
+}
+
+.Skill-bar .bar {
+    width: 100%;
+    height: 15px;
+    background-color: #272c30;
+    border-radius: 20px;
+    overflow: hidden;
+}
+
+.active-bar {
+    background-color: #80ed99;
+    height: 100%;
+    width: auto; /* Swiper handles width dynamically */
+    border-radius: 20px;
+    transition: width 0.8s ease-out; /* Animation for skill bars */
+}
+
+/* Services Slide Specific Styling */
+
+
+.services {
+    color: white;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); /* Responsive grid */
+    gap: 20px; /* Gap between service items */
+    /* Removed specific grid-template-rows as auto-fit handles it */
+    padding: 0 20px; /* Adjusted padding within the slide */
+}
+
+.services .heading { /* Specific heading for services */
+    grid-column: 1 / -1; /* Span all columns */
+    margin-bottom: 20px; /* Space below heading */
+}
+
+.services .service-item { /* Corrected class name */
+    display: flex;
+    text-align: center;
+    justify-content: center;
+    padding: 15px;
+    background-color: rgba(0, 0, 0, 0.437);
+    border-radius: 5px;
+    /* margin: 20px; -- Grid gap handles margin */
+    backdrop-filter: blur(10px);
+    flex-direction: column;
+    transition: background-color 0.25s, color 0.25s, transform 0.2s; /* Added transform */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Added subtle shadow */
+}
+
+.services .service-item i {
+    font-size: 3rem;
+    color: #80ed99;
+    margin-bottom: 10px; /* Space below icon */
+}
+
+/* Removed .services .service .service-icon as it's not in HTML */
+
+.service-item h2 { /* Corrected class name */
+    color: #80ed99;
+    margin-bottom: 10px;
+}
+
+.service-item:hover { /* Corrected class name */
+    background-color: #80ed99;
+    color: #176d2d;
+    transform: translateY(-5px); /* Lift on hover */
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.4); /* Enhanced shadow on hover */
+}
+
+.service-item:hover h2, /* Corrected class name */
+.service-item:hover i {
+    color: #176d2d;
+}
+
+/* Gallery Slide Specific Styling */
+
+
+.gallery { /* Original gallery class from your CSS */
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* Responsive grid */
+    gap: 20px; /* Gap between projects */
+    /* Removed specific grid-template-rows */
+    padding: 0 20px; /* Adjusted padding within the slide */
+}
+
+.gallery h1 { /* Your h1 for Gallery */
+    grid-column: 1 / -1; /* Span all columns */
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.gallery h2 { /* This h2 seems to be missing in the provided HTML for gallery, but if it exists, it spans all columns */
+    grid-column: 1 / -1;
+    color: white;
+    font-weight: 600;
+    font-size: 1.5rem;
+    padding: 20px 10px;
+    text-align: center;
+}
+
+.gallery .project {
+    margin: 0; /* Remove margin, use grid gap instead */
+    background: #212529;
+    padding: 5px;
+    border-radius: 5px; /* Added border-radius */
+    overflow: hidden; /* For images */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.gallery .project:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.4);
+}
+
+.gallery .project img {
+    width: 100%;
+    height: 200px; /* Fixed height for consistency */
+    border-radius: 5px; /* Apply border radius to image as well */
+    object-fit: cover;
+    display: block;
+    border: none;
+    transition: transform 0.2s ease;
+}
+
+.gallery .project:hover img {
+    transform: scale(1.05);
+}
+
+/* Contact Slide Specific Styling */
+.contact-slide { /* Matches ID in HTML */
+    /* Padding is defined on .swiper-slide already */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start; /* Align content to top */
+    gap: 30px; /* Space between major sections */
+}
+
+.contact-slide .heading {
+    margin-bottom: 0; /* Heading should be at the top of the slide */
+}
+
+.contact-grid { /* Corrected from contactMe and contactinfo in your CSS */
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+    width: 100%; /* Take full width of the slide's padding area */
+    max-width: 900px; /* Limit width for better appearance */
+    color: white;
+}
+
+.contact-details { /* Corrected from contactinfo */
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    color: white;
+    justify-content: center;
+    text-align: center;
+    align-items: center;
+    background-color: #212529; /* Match aside background */
+    border-radius: 5px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.contact-details i { /* Corrected from contactinfo i */
+    padding: 10px;
+    font-size: 2.5rem;
+    color: #80ed99;
+    margin: 10px auto; /* Reduced margin */
+}
+
+.contact-details h3 { /* Corrected from contactinfo h3 */
+    color: #80ed99;
+    margin-bottom: 5px;
+}
+
+.contact-details p {
+    margin: 0; /* Remove default paragraph margin */
+    font-size: 1rem;
+}
+
+.contact-form { /* Corrected from contactMe form */
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    max-width: 600px; /* Limit width for better appearance */
+    padding: 20px;
+    height: fit-content;
+    color: white;
+    background-color: #212529;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+.contact-form h2 {
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    color: #80ed99;
+    font-size: 1.8rem; /* Adjusted font size */
+    margin-bottom: 20px;
+}
+
+.social-icons { /* Corrected from form h2.socialLinks */
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-bottom: 20px;
+    width: fit-content;
+    margin-left: auto;
+    margin-right: auto; /* Center the social links group */
+    background-color: #212529; /* Apply background to the group itself */
+    border-radius: 30px;
+    padding: 5px 15px; /* Add padding to the group */
+}
+
+.social-icons a {
+    color: white; /* Default icon color */
+    font-size: 1.8rem; /* Adjusted size */
+    transition: color 0.25s, transform 0.25s;
+}
+
+.social-icons a:hover {
+    color: #0ed999; /* Green on hover */
+    transform: translateY(-3px); /* Lift on hover */
+}
+
+
+.contact-form input,
+.contact-form textarea {
+    width: calc(100% - 40px); /* Account for margin */
+    padding: 15px;
+    border-radius: 10px;
+    margin: 10px 20px; /* Reduced vertical margin */
+    font-size: 1.1rem;
+    border: none;
+    color: white;
+    background-color: #212529;
+}
+
+.contact-form textarea {
+    min-height: 120px; /* Give textarea a minimum height */
+    resize: vertical; /* Allow vertical resizing */
+}
+
+.contact-form input:focus,
+.contact-form textarea:focus {
+    border: 1px solid #B5F69F;
+    outline: none;
+    box-shadow: 0 0 0 3px rgba(181, 246, 159, 0.3); /* Subtle glow on focus */
+}
+
+.contact-form button.primary { /* Specific selector for the button */
+    display: block;
+    padding: 10px 20px;
+    border: none;
+    outline: none;
+    font-size: 1.2rem;
+    font-weight: 500;
+    margin: 20px auto 10px; /* Center button */
+    cursor: pointer;
+    background-color: #1d8637;
+    color: white;
+    border-radius: 5px;
+    width: calc(100% - 40px); /* Match input width */
+    transition: background-color 0.2s ease, transform 0.2s ease;
+}
+
+.contact-form button.primary:hover {
+    background-color: #0ed999;
+    transform: translateY(-2px);
+}
+
+footer {
+    /* Removed position: absolute; to allow it to flow naturally at the bottom of the contact slide */
+    /* It's better to manage its placement within the swiper-slide */
+    margin-top: auto; /* Push footer to bottom of flex container (contact-slide) */
+    text-align: center;
+    color: white;
+    width: 100%;
+    font-weight: 200;
+    font-size: 0.8rem;
+    padding: 10px 0; /* Add padding for visibility */
+}
+
+footer p { /* Corrected from footer li to footer p */
+    margin: 0; /* Remove default margins */
+}
+
+/* Responsive Design (adjusted for your new styles) */
+@media (max-width: 1024px) {
+    .home-slide {
+        flex-direction: column;
+        text-align: center;
+        padding: 50px; /* Reduce padding for smaller screens */
+    }
+    .homeContent, .slideImg {
+        max-width: 100%;
+        flex: none;
+    }
+    .slideImg {
+        margin-top: 2rem;
+    }
+    .HomeContent h1 {
+        font-size: 2.5rem;
+    }
+    .HomeContent h2 {
+        font-size: 1.8em;
+    }
+    .HomeContent .heroline {
+        padding-right: 0;
+    }
+    .about-me-division {
+        flex-direction: column;
+        align-items: center;
+    }
+    .about-me-left, .Skill-bar {
+        min-width: unset;
+        width: 100%;
+    }
+    .swiper-slide {
+        padding: 50px; /* Reduce default slide padding */
+    }
+    .services, .gallery, .contact-grid {
+        padding: 0 10px; /* Reduce horizontal padding */
+    }
+}
+
+@media (max-width: 768px) {
+    main {
+        flex-direction: column;
+        height: auto; /* Allow height to adapt on small screens */
+    }
+    aside {
+        width: 100%;
+        height: auto;
+        flex-direction: row;
+        justify-content: center;
+        padding: 10px 5px;
+        border-radius: 0;
+        box-shadow: 0 2px 5px rgba(0,0,0,0.3);
+        order: -1; /* Place aside at the top on mobile */
+    }
+    aside .links {
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 5px;
+    }
+    aside li {
+        padding: 10px 15px;
+        font-size: 0.9rem;
+        gap: 5px;
+    }
+    aside li i {
+        font-size: 1rem;
+    }
+    aside li p {
+        display: none; /* Hide text on very small screens, show only icons */
+    }
+    aside li.active p,
+    aside li:hover p {
+        display: block; /* Show text for active/hovered item if space allows */
+        font-size: 0.9rem;
+    }
+
+    .mySwiper {
+        width: 100vw; /* Take full viewport width */
+        margin: 0; /* Remove margin */
+        border-radius: 0; /* Remove border-radius */
+    }
+    .swiper-slide {
+        padding: 20px; /* Further reduce padding */
+    }
+    .heading {
+        font-size: 2rem;
+    }
+    .HomeContent h1 {
+        font-size: 2rem;
+    }
+    .HomeContent h2 {
+        font-size: 1.5em;
+    }
+    .HomeContent .heroline {
+        font-size: 1rem;
+    }
+    .buttonGroup {
+        flex-direction: column;
+    }
+    .buttonGroup button {
+        width: 100%;
+    }
+    .slide-help {
+        bottom: 5px;
+        font-size: 1rem;
+    }
+    .services .service-item, .contact-details {
+        padding: 15px;
+    }
+    .contact-form {
+        padding: 15px;
+    }
+}
+
+@media (max-width: 480px) {
+    aside li p {
+        display: none; /* Ensure text is hidden on very small screens */
+    }
+    .heading {
+        font-size: 1.8rem;
+    }
+    .HomeContent h1 {
+        font-size: 1.8rem;
+    }
+    .HomeContent h2 {
+        font-size: 1.2em;
+    }
+    p {
+        font-size: 0.9rem;
+    }
+    .services .service-item h2 {
+        font-size: 1.3rem;
+    }
+    .contact-form h2 {
+        font-size: 1.4rem;
+    }
+    .social-icons {
+        gap: 10px;
+        padding: 5px 10px;
+    }
+    .social-icons a {
+        font-size: 1.3rem;
+    }
+    .contact-form input,
+    .contact-form textarea {
+        margin: 5px 10px;
+        width: calc(100% - 20px);
+    }
+    .contact-form button.primary {
+        width: calc(100% - 20px);
+        margin: 10px auto;
+    }
+}
+
+
+/* style.css (excerpt) */
+
+.form-messages {
+    margin-top: 15px;
+    padding: 10px;
+    border-radius: 5px;
+    font-size: 0.95rem;
+    text-align: center;
+    opacity: 0; /* Hidden by default */
+    transition: opacity 0.3s ease, background-color 0.3s ease;
+}
+
+.form-messages.success {
+    background-color: #28a745; /* Green for success */
+    color: white;
+    opacity: 1;
+}
+
+.form-messages.error {
+    background-color: #dc3545; /* Red for error */
+    color: white;
+    opacity: 1;
+}
+
+/* You might also want to adjust styles for input/textarea/button if needed,
+   but assuming those are already styled by your main CSS. */

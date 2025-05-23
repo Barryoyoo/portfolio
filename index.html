@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Portfolio</title>
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css" integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <main>
+        <aside>
+            <ul class="links">
+                <li onclick="navigate(0)">
+                    <i class="fas fa-home"></i>
+                    <p>Home</p>
+                </li>
+                <li onclick="navigate(1)">
+                    <i class="fas fa-user"></i>
+                    <p>About</p>
+                </li>
+                <li onclick="navigate(2)">
+                    <i class="fas fa-tools"></i>
+                    <p>Services</p>
+                </li>
+                <li onclick="navigate(3)">
+                    <i class="fas fa-images"></i>
+                    <p>Portfolio</p>
+                </li>
+                <li onclick="navigate(4)">
+                    <i class="fas fa-envelope"></i>
+                    <p>Contact</p>
+                </li>
+            </ul>
+        </aside>
+
+        <div class="mySwiper">
+            <div class="swiper-wrapper">
+                <div class="swiper-slide home-slide" id="home">
+                    <div class="homeContent">
+                        <h1>HELLO THERE !</h1>
+                        <h2 class="hero-name">I'M <span class="stylized-name">Barrack oyoo</span></h2>
+                        <h2 class="professions">
+                            I Am a <span id="profession-text">Web Developer</span>
+                        </h2>
+                        <p class="heroline">
+                            With a passion for creating beautiful and functional web experiences.
+                            I specialize in building responsive and dynamic web applications.
+                        </p>
+                        <div class="buttonGroup">
+                            <button class="primary">Hire Me</button>
+                            <button class="primary">Download CV</button>
+                        </div>
+                    </div>
+                    <div class="slideImg">
+                        <img src="a90be5504af125eda40e2249b2b8d83a.jpg" alt="barracks Photo">
+                        <div class="top-right-corner">
+                            <hr class="hr1">
+                            <hr class="hr2">
+                        </div>
+                        <div class="bottom-left-corner">
+                            <hr class="hr1">
+                            <hr class="hr2">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="swiper-slide about" id="about">
+                    <h1 class="heading">About Me</h1>
+                    <h3>Let me introduce myself.</h3>
+                    <p class="aboutme-details">
+                        I am a passionate web developer with a keen eye for detail and a love for
+                        creating engaging digital experiences. My journey in web development began
+                        with a fascination for how websites are built and has evolved into a
+                        commitment to crafting robust, scalable, and user-friendly applications.
+                    </p>
+
+                    <div class="about-me-division">
+                        <div class="about-me-left">
+                            <ul class="skills-list">
+                                <li><span>Name:</span> Barrack Oyoo</li>
+                                <li><span>Date of Birth:</span> February 04, 2025</li>
+                                <li><span>Address:</span> Nairobi, Kenya</li>
+                                <li><span>Email:</span> bodoro17@gmail..com</li>
+                                <li><span>Phone:</span> +254 791 087 502</li>
+                                <li><span>Freelance:</span> Available</li>
+                            </ul>
+                            <div class="buttonGroup">
+                                <button class="primary">Download CV</button>
+                            </div>
+                        </div>
+                        <div class="Skill-bar">
+                            <ul>
+                                <li>
+                                    <p>HTML5</p>
+                                    <div class="bar">
+                                        <div class="active-bar" style="width: 95%;"></div>
+                                    </div>
+                                </li>
+                                <li>
+                                    <p>CSS3</p>
+                                    <div class="bar">
+                                        <div class="active-bar" style="width: 90%;"></div>
+                                    </div>
+                                </li>
+                                <li>
+                                    <p>JavaScript</p>
+                                    <div class="bar">
+                                        <div class="active-bar" style="width: 85%;"></div>
+                                    </div>
+                                </li>
+                                <li>
+                                    <p>React.js</p>
+                                    <div class="bar">
+                                        <div class="active-bar" style="width: 80%;"></div>
+                                    </div>
+                                </li>
+                                <li>
+                                    <p>Node.js</p>
+                                    <div class="bar">
+                                        <div class="active-bar" style="width: 75%;"></div>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="swiper-slide services-slide" id="services">
+                    <h1 class="heading">My Services</h1>
+                    <div class="services">
+                        <div class="service-item">
+                            <i class="fas fa-laptop-code"></i>
+                            <h2>Web Development</h2>
+                            <p>Crafting responsive and dynamic websites using modern technologies.</p>
+                        </div>
+                        <div class="service-item">
+                            <i class="fas fa-mobile-alt"></i>
+                            <h2>Responsive Design</h2>
+                            <p>Ensuring your website looks great on all devices, from desktop to mobile.</p>
+                        </div>
+                        <div class="service-item">
+                            <i class="fas fa-server"></i>
+                            <h2>Backend Development</h2>
+                            <p>Building robust server-side logic and APIs for seamless data management.</p>
+                        </div>
+                        <div class="service-item">
+                            <i class="fas fa-database"></i>
+                            <h2>Database Management</h2>
+                            <p>Designing and managing efficient databases for your applications.</p>
+                        </div>
+                        <div class="service-item">
+                            <i class="fas fa-paint-brush"></i>
+                            <h2>UI/UX Design</h2>
+                            <p>Creating intuitive and engaging user interfaces for better user experience.</p>
+                        </div>
+                        <div class="service-item">
+                            <i class="fas fa-search-dollar"></i>
+                            <h2>SEO Optimization</h2>
+                            <p>Improving your website's visibility on search engines to reach a wider audience.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="swiper-slide gallery-slide" id="portfolio">
+                    <h1 class="heading">My Portfolio</h1>
+                    <div class="gallery">
+                        <div class="project">
+                            <img src="port 1.jpg" alt="Project 1">
+                        </div>
+                        <div class="project">
+                            <img src="port 2.jpg" alt="Project 2">
+                        </div>
+                        <div class="project">
+                            <img src="port 3.jpg" alt="Project 3">
+                        </div>
+                        <div class="project">
+                            <img src="port 1.jpg" alt="Project 4">
+                        </div>
+                        <div class="project">
+                            <img src="port 2.jpg" alt="Project 5">
+                        </div>
+                        <div class="project">
+                            <img src="port 3.jpg" alt="Project 6">
+                        </div>
+                    </div>
+                </div>
+
+                <div class="swiper-slide contact-slide" id="contact">
+                    <h1 class="heading">Contact Me</h1>
+                    <div class="contact-grid">
+                        <div class="contact-details">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <h3>Address</h3>
+                            <p>Nairobi, Kenya</p>
+                        </div>
+                        <div class="contact-details">
+                            <i class="fas fa-phone"></i>
+                            <h3>Phone</h3>
+                            <p>+254 791 087 502</p>
+                        </div>
+                        <div class="contact-details">
+                            <i class="fas fa-envelope"></i>
+                            <h3>Email</h3>
+                            <p>bodoro2017@gmail.com</p>
+                        </div>
+                        <div class="contact-details">
+                            <i class="fas fa-clock"></i>
+                            <h3>Working Hours</h3>
+                            <p>Mon - Fri: 9:00 AM - 5:00 PM</p>
+                        </div>
+                    </div>
+
+                    <form class="contact-form" action="https://formspree.io/f/xkgrvzbg" method="POST">
+                        <h2>Send me a message</h2>
+                        <div class="social-icons">
+                            <a href="#"><i class="fab fa-facebook-f"></i></a>
+                            <a href="#"><i class="fab fa-twitter"></i></a>
+                            <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                            <a href="#"><i class="fab fa-github"></i></a>
+                        </div>
+                        <input type="text" name="name" placeholder="Your Name" required>
+                        <input type="email" name="email" placeholder="Your Email" required>
+                        <input type="text" name="Subject" placeholder="Subject">
+                        <textarea placeholder="Your Message" rows="6"></textarea>
+                        <button type="submit" class="primary">Send Message</button>
+                        <div class="form-messages" id="form-messages"></div>
+
+                    </form>
+                    <footer>
+                        <p>&copy; 2025 Anuj Raj. All Rights Reserved.</p>
+                    </footer>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <script src="script.js"></script>
+    <script src="java.js"></script>
+</body>
+</html>
